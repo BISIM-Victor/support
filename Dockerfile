@@ -1,7 +1,7 @@
 
 
-# Usar una imagen base de OpenJDK 8 con Tomcat (ajustado para WAR)
-FROM openjdk:8-jdk
+# Usar una imagen base de OpenJDK 11
+FROM openjdk:11-jdk-slim
 
 # Configurar el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -13,4 +13,4 @@ COPY target/support.war /app/app.war
 EXPOSE 8080
 
 # Ejecutar la aplicación Spring Boot WAR
-CMD ["java", "-jar", "/app/app.war"]
+ENTRYPOINT ["java", "-jar", "/app/app.war"]
