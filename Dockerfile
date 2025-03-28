@@ -12,3 +12,4 @@ EXPOSE 8080
 
 # Arranca Tomcat
 CMD ["catalina.sh", "run"]
+
