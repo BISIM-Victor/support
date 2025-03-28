@@ -42,13 +42,17 @@
         </dependency>
 
 
+<!--        <dependency>-->
+<!--            <groupId>org.postgresql</groupId>-->
+<!--            <artifactId>postgresql</artifactId>-->
+<!--            <version>42.5.0</version> &lt;!&ndash; Verifica que sea una versión reciente &ndash;&gt;-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.5.0</version> <!-- Verifica que sea una versión reciente -->
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version> <!-- Asegúrate de usar la última versión disponible -->
         </dependency>
-
-
 
         <dependency>
             <groupId>org.projectlombok</groupId>
