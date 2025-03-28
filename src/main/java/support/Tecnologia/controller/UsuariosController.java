@@ -14,9 +14,16 @@ import support.Tecnologia.entity.Usuarios;
 import support.Tecnologia.service.UsuariosService;
 
 @Api(tags = "API de Usuarios ")
+
+
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosController {
+
+    @GetMapping("/")
+    public String home() {
+        return "¡La aplicación está corriendo!";
+    }
     private static final Logger logger = LogManager.getLogger(UsuariosService.class);
 
     @Autowired
