@@ -42,10 +42,16 @@
         </dependency>
 
 
+<!--        <dependency>-->
+<!--            <groupId>org.postgresql</groupId>-->
+<!--            <artifactId>postgresql</artifactId>-->
+<!--            <version>42.5.0</version> &lt;!&ndash; Asegúrate de usar la versión compatible &ndash;&gt;-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.5.0</version> <!-- Asegúrate de usar la versión compatible -->
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
