@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatasourceConfig {
 
+
     @Value("${spring.datasource.url}")
     private String datasourceUrl;
 
