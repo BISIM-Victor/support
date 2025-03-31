@@ -22,7 +22,7 @@ public class UsuariosController {
     private UsuariosService usuariosService;
 
     // ✅ PRUEBA SI EL SERVIDOR ESTÁ FUNCIONANDO
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home() {
         return "¡La aplicación está corriendo!";
     }
