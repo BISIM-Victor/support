@@ -42,15 +42,10 @@
         </dependency>
 
 
-<!--        <dependency>-->
-<!--            <groupId>org.postgresql</groupId>-->
-<!--            <artifactId>postgresql</artifactId>-->
-<!--            <version>42.5.0</version> &lt;!&ndash; Asegúrate de usar la versión compatible &ndash;&gt;-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <version>42.7.3</version> <!-- O la última versión disponible -->
             <scope>runtime</scope>
         </dependency>
 
@@ -63,7 +58,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>compile</scope>
+            <scope>provided</scope>
             <!--			compile - provided -->
         </dependency>
 
