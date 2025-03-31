@@ -1,9 +1,6 @@
 package support.Tecnologia.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,66 +10,85 @@ import support.Tecnologia.dto.Response.ResponseDTO;
 import support.Tecnologia.entity.Usuarios;
 import support.Tecnologia.service.UsuariosService;
 
-@Api(tags = "API de Usuarios ")
-
+@Api(tags = "API de Usuarios")
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosController {
 
+    private static final Logger logger = LogManager.getLogger(UsuariosController.class);
+
+    @Autowired
+    private UsuariosService usuariosService;
+
+    // ✅ PRUEBA SI EL SERVIDOR ESTÁ FUNCIONANDO
     @GetMapping("/")
     public String home() {
         return "¡La aplicación está corriendo!";
     }
-    private static final Logger logger = LogManager.getLogger(UsuariosService.class);
 
-    @Autowired
-    UsuariosService usuariosService;
-
-    // Crear un nuevo usuario
+    // ✅ CREAR UN NUEVO USUARIO
     @ApiOperation(value = "Crear un nuevo usuario", response = ResponseDTO.class)
-    @ApiResponses(value = {
+    @ApiResponses({
             @ApiResponse(code = 200, message = "Usuario creado correctamente"),
             @ApiResponse(code = 400, message = "Error al crear usuario")
     })
     @PostMapping("/crear")
     public ResponseEntity<ResponseDTO> createUsuarios(@RequestBody Usuarios usuarios) {
-        return ResponseEntity.ok(usuariosService.createUsuarios(usuarios));
+        try {
+            logger.info("Intentando crear usuario: " + usuarios.getUsuario());
+            return ResponseEntity.ok(usuariosService.createUsuarios(usuarios));
+        } catch (Exception e) {
+            logger.error("Error al crear usuario: " + e.getMessage());
+            return ResponseEntity.badRequest().body(new ResponseDTO("Error al crear usuario", false));
+        }
     }
 
-
-    // Obtener todos los usuarios
-    @ApiOperation(value = "Obtener todos los usuarios", notes = "Devuelve una lista de todos los usuarios", response = ResponseDTO.class)
-    @ApiResponses(value = {
+    // ✅ OBTENER TODOS LOS USUARIOS
+    @ApiOperation(value = "Obtener todos los usuarios", response = ResponseDTO.class)
+    @ApiResponses({
             @ApiResponse(code = 200, message = "Usuarios encontrados"),
             @ApiResponse(code = 500, message = "Error interno del servidor")
     })
     @GetMapping
     public ResponseEntity<ResponseDTO> getAllUsuarios() {
-        return ResponseEntity.ok(usuariosService.getAllUsuarios());
+        try {
+            return ResponseEntity.ok(usuariosService.getAllUsuarios());
+        } catch (Exception e) {
+            logger.error("Error al obtener usuarios: " + e.getMessage());
+            return ResponseEntity.internalServerError().body(new ResponseDTO("Error interno", false));
+        }
     }
 
-
-    // Obtener un usuario por ID
+    // ✅ OBTENER UN USUARIO POR ID
     @ApiOperation(value = "Obtener un usuario por ID", notes = "Devuelve los detalles de un usuario por su ID", response = ResponseDTO.class)
-    @ApiResponses(value = {
+    @ApiResponses({
             @ApiResponse(code = 200, message = "Usuario encontrado"),
             @ApiResponse(code = 404, message = "Usuario no encontrado")
     })
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDTO> getUsuarios(@PathVariable Long id) {
-        return ResponseEntity.ok(usuariosService.getUsuarios(id));
+        try {
+            return ResponseEntity.ok(usuariosService.getUsuarios(id));
+        } catch (Exception e) {
+            logger.error("Usuario no encontrado: " + e.getMessage());
+            return ResponseEntity.status(404).body(new ResponseDTO("Usuario no encontrado", false));
+        }
     }
 
-
-    // Eliminar un usuario (borrado lógico)
+    // ✅ ELIMINAR UN USUARIO (BORRADO LÓGICO)
     @ApiOperation(value = "Eliminar un usuario por ID", notes = "Realiza un borrado lógico del usuario", response = ResponseDTO.class)
-    @ApiResponses(value = {
+    @ApiResponses({
             @ApiResponse(code = 200, message = "Usuario eliminado"),
             @ApiResponse(code = 404, message = "Usuario no encontrado")
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseDTO> deleteUsuarios(@PathVariable Long id) {
-        return ResponseEntity.ok(usuariosService.deleteUsuarios(id));
+        try {
+            return ResponseEntity.ok(usuariosService.deleteUsuarios(id));
+        } catch (Exception e) {
+            logger.error("Error al eliminar usuario: " + e.getMessage());
+            return ResponseEntity.status(404).body(new ResponseDTO("Usuario no encontrado", false));
+        }
     }
 }
