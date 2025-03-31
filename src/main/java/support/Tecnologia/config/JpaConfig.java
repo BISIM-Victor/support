@@ -10,7 +10,7 @@ import javax.activation.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.example.repository")
+    @EnableJpaRepositories(basePackages = "com.example.repository")//no es necesario ya que se ocupaspring-boot-starter-data-jpa
 public class JpaConfig {
     @Bean
     public DataSource dataSource() {
