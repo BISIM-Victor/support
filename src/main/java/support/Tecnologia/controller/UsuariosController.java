@@ -15,7 +15,7 @@ import support.Tecnologia.service.UsuariosService;
 
 @Api(tags = "API de Usuarios ")
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosController {
