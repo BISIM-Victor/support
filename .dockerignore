@@ -1,6 +1,4 @@
-# Ignorar target completo, excepto los archivos necesarios
-/target/
-!/target/support/WEB-INF/lib/postgresql-42.7.3.jar
+!/target/
 *.iml
 .idea/
 *.log
