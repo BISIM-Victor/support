@@ -1,5 +1,5 @@
 # Usa una imagen base de Tomcat
-FROM tomcat:9-jdk8
+FROM tomcat:9-jdk8-openjdk
 
 # Elimina el archivo WAR de ejemplo de Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
