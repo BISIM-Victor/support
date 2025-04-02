@@ -1,16 +1,15 @@
-# Usa una imagen base de Tomcat
-FROM tomcat:9-jdk8-openjdk
 
-# Elimina el archivo WAR de ejemplo de Tomcat
-RUN rm -rf /usr/local/tomcat/webapps/ROOT
+# Usa Amazon Corretto con Java 17
+FROM amazoncorretto:17
 
-# Copia tu archivo WAR a la carpeta de aplicaciones de Tomcat
-COPY target/support.war /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+# Crea el directorio de trabajo
+WORKDIR /app
 
+# Copia el archivo JAR a la imagen
+COPY target/support.jar app.jar
 
-# Expone el puerto en el que Tomcat escucha (por defecto 8080)
+# Expone el puerto 8080
 EXPOSE 8080
 
-# Arranca Tomcat
-CMD ["catalina.sh", "run"]
-
+# Arranca la aplicación Spring Boot
+CMD ["java", "-jar", "app.jar", "--server.port=8080"]
