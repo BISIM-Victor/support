@@ -41,12 +41,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- MySQL Connector -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.7.3</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/target/support/WEB-INF/lib/postgresql-42.7.3.jar</systemPath>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version> <!-- Asegúrate de usar la versión correcta -->
         </dependency>
 
         <dependency>
