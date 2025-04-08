@@ -1,6 +1,7 @@
-
+.git
+.gitignore
+Dockerfile
+README.md
 *.iml
 .idea/
 *.log
-HELP.md
-.vscode/
