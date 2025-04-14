@@ -12,7 +12,7 @@
 .m2/
 
 # Ignorar la carpeta target donde se construyen los JARs y otros artefactos
-target/
+target/*
 
 # Pero permitir solo el archivo JAR compilado (ajusta el nombre si es necesario)
 !target/support-0.0.1-SNAPSHOT.jar
