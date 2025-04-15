@@ -1,0 +1,4 @@
+package TI.support.config;
+
+public class SwaggerConfig {
+}
